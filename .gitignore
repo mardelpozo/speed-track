@@ -192,3 +192,17 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+#Additions
+# Dataset files (don't upload videos/large data)
+data/VS13/
+data/calibration/*.json
+
+# Outputs and artifacts
+outputs/
+*.mp4
+*.csv
+
+# Editor/IDE files
+.vscode/
+.idea/
