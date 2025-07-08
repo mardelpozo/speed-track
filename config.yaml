@@ -1,0 +1,60 @@
+dataset:
+  name: "VS13"
+  subset: "MercedesAMG550"
+  path: "data/VS13/MercedesAMG550/"
+  calibration: "data/calibration/homography.json"
+  video_glob: "*.mp4"
+  annotation_glob: ".txt"
+
+demo:
+  homography: "data/calibration/supervision.json"
+
+models:
+  yolo:
+    weights: "models/yolov12.pt"
+    conf_thresh: 0.25
+  rfdetr:
+    weights: "models/rf_detr.pt"
+    conf_thresh: 0.25
+  retinanet:
+    weights: "models/retinanet.pt"
+    conf_thresh: 0.25
+
+trackers:
+  bytetrack:
+    max_age: 30
+    min_hits: 3
+    track_thresh: 0.5
+    track_buffer: 30
+    match_thresh: 0.8
+  norfair:
+    max_age: 30
+    min_hits: 3
+    box_size: 20
+
+device:
+  auto: true
+  preferred: null
+  fallback: "cpu"
+
+video:
+  fps: 30
+  skip_frames: 1
+
+inference:
+  batch_size: 1
+  half_precision: true
+  conf_thresh: 0.25
+  iou_thresh: 0.5
+
+speed:
+  limit: 80
+  
+output:
+  csv: "outputs/results.csv"
+  video: "outputs/output.mp4"
+  save: true
+
+logging:
+  verbosity: 2
+  progress: true
